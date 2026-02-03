@@ -1,0 +1,67 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: elk-service
+  spring:
+    config:
+      import: optional:nacos:${spring.application.name}
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.31.38.196:8848
+        namespace: public
+        group: DEFAULT_GROUP
+    loadbalancer:
+      ribbon:
+        enabled: false  # 如果使用旧版本，可能需要禁用 Ribbon
+      cache:
+        enabled: true
+        ttl: 30s
+        capacity: 50
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.31.38.196:3306/seata?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+# xxl-job配置
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:8088/xxl-job-admin
+    executor:
+      appname: xxl-job-executor-sample
+      address:
+      ip: localhost
+      port: 8081
+      logpath: /data/applogs/xxl-job/xxl-job-admin
+      logretentiondays: 30
+    accessToken: default_token
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+# Knife4j 配置
+knife4j:
+  enable: true
+  openapi:
+    title: "SpringBoot API??"
+    description: "SpringBoot2.7.17??Knife4j"
+    version: "1.0"
+    contact:
+      name: "???"
+      url: "https://example.com"
+      email: "dev@example.com"
+    license:
+      name: "Apache 2.0"
+      url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  setting:
+    language: "zh_cn"  # ????
+    enable-swagger-models: true
+    enable-document-manage: true
+    swagger-model-name: ?????
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
