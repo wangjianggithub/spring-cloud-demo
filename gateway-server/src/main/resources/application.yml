@@ -1,0 +1,77 @@
+server:
+   port: 8086
+
+spring:
+  application:
+    name: gateway-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.31.38.196:3306/seata?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+#  main:
+#    allow-bean-definition-overriding: true
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.security.oauth2.client.reactive.ReactiveOAuth2ClientAutoConfiguration
+#  security:
+#    oauth2:
+#        client:
+#          registration:
+#            keycloak: # 或你的 OAuth2 提供商名称
+#              client-id: security-admin-console
+#              scope: openid
+#              client-secret: pp25batmGJr0wVg2ynSbQRyRLV5nRJpX
+#              authorization-grant-type: authorization_code
+#              #            redirect-uri: "http://localhost:8090/admin/master/console"
+#              redirect-uri: "http://localhost:8090/realms/master/console"
+#          provider:
+#            keycloak:
+#              issuer-uri: http://localhost:8090/realms/master  # 直接设置具体的URI
+#        resourceserver:
+  #        jwt:
+#          issuer-uri: http://localhost:8082
+#          jwk-set-uri: http://localhost:8090/admin/master/console
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.31.38.196:8848
+        namespace: public
+        group: DEFAULT_GROUP
+    loadbalancer:
+      ribbon:
+        enabled: false  # 如果使用旧版本，可能需要禁用 Ribbon
+      cache:
+        enabled: true
+        ttl: 30s
+        capacity: 50
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: service-provider
+          uri: lb://service-provider
+          predicates:
+            - Path=/provider/**
+          filters:
+            - StripPrefix=1  # 去掉前缀 /api
+        - id: server-customer
+          uri: lb://server-customer
+          predicates:
+            - Path=/customer/**
+          filters:
+            - StripPrefix=1  # 去掉前缀 /api
+        - id: elk-service
+          uri: lb://elk-service
+          predicates:
+            - Path=/elk/**
+          filters:
+            - StripPrefix=1  # 去掉前缀 /api
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
