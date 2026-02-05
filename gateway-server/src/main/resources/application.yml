@@ -69,8 +69,6 @@ spring:
             - Path=/elk/**
           filters:
             - StripPrefix=1  # 去掉前缀 /api
-
-
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG

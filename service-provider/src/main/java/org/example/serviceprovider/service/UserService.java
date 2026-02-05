@@ -4,7 +4,7 @@ import org.example.serviceprovider.entity.UserEntity;
 
 public interface UserService {
 
-    UserEntity queryList();
+    UserEntity saveUserInfo();
 
     UserEntity getUserById(String id);
 }

@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @GlobalTransactional
-    public UserEntity queryList() {
+    public UserEntity saveUserInfo() {
         UserEntity user = new UserEntity();
         user.setId(UUID.randomUUID().toString());
         user.setName("李四");
@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
     public UserEntity getUserById(String userId) {
         String cacheKey = "user:" + userId;
         long cacheTime = 3600; // 缓存1小时
-
         return cacheConfig.getCachedData(cacheKey, UserEntity.class, () -> {
             // 从数据库查询用户数据
             return getUserFromDatabase(userId);

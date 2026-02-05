@@ -16,9 +16,9 @@ public class UserInfoController {
     @Resource
     private UserService userService;
 
-    @GetMapping("/findUser")
-    public ApiResponse<UserEntity> findUser(){
-        UserEntity users = userService.queryList();
+    @GetMapping("/saveUserInfo")
+    public ApiResponse<UserEntity> saveUserInfo(){
+        UserEntity users = userService.saveUserInfo();
         return ApiResponse.success(users);
     }
 

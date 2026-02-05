@@ -24,6 +24,10 @@ spring:
     url: jdbc:mysql://172.31.38.196:3306/seata?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
+  elasticsearch:
+    uris: http://localhost:9200
+    username:
+    password:
 # xxl-job配置
 xxl:
   job:
