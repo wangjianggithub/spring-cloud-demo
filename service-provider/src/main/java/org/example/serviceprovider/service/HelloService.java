@@ -1,6 +1,6 @@
 package org.example.serviceprovider.service;
 
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 
 public interface HelloService {
 

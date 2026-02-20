@@ -2,12 +2,14 @@ package org.example.serviceprovider.service.impl;
 
 import io.seata.spring.annotation.GlobalTransactional;
 import org.example.serviceprovider.redis.RedisCacheConfig;
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 import org.example.serviceprovider.mapper.UserInfoMapper;
 import org.example.serviceprovider.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -40,6 +42,21 @@ public class UserServiceImpl implements UserService {
             // 从数据库查询用户数据
             return getUserFromDatabase(userId);
         }, cacheTime);
+    }
+
+    @Override
+    public Boolean saveUser() {
+        List<UserEntity> users = new ArrayList<>();
+        for (int i=0; i<10000; i++){
+            UserEntity user = new UserEntity();
+            user.setId(UUID.randomUUID().toString());
+            user.setName("lisi" + i);
+            user.setAge("20");
+            user.setEmail("http://123.com");
+            user.setPassword("234");
+            users.add(user);
+        }
+        return userInfoMapper.batchSaveUser(users);
     }
 
     private UserEntity getUserFromDatabase(String userId) {

@@ -28,6 +28,12 @@ spring:
     uris: http://localhost:9200
     username:
     password:
+# 常见的 MinIO 配置格式
+minio:
+  endpoint: http://172.31.38.196:9001
+  access-key: HpVGpDbrdSlwVSoGpm6s
+  secret-key: CUZkOgcXNjNXBWfl79WaS6gClXHXRD5I69fyktwE
+  bucket: datasets
 # xxl-job配置
 xxl:
   job:

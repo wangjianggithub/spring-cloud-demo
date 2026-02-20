@@ -3,7 +3,7 @@ package org.example.serviceprovider.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.rabbitmq.client.Channel;
 import org.example.serviceprovider.util.ApiResponse;
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 import org.example.serviceprovider.service.HelloService;
 import org.example.serviceprovider.util.RabbitmqUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

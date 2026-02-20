@@ -5,7 +5,7 @@ import com.xxl.job.core.handler.annotation.XxlJob;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 姑苏老陈
+ * @author wangjiang
  * @date 2024/12/18
  */
 @Component

@@ -1,6 +1,6 @@
 package org.example.serviceprovider.controller;
 
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 import org.example.serviceprovider.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;

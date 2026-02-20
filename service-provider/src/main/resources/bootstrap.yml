@@ -69,3 +69,4 @@ seata:
   # 暂时禁用注册中心，使用直连
   registry:
     type: file
+

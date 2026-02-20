@@ -1,4 +1,4 @@
-package org.example.serviceprovider.entity;
+package org.example.serviceprovider.entity.po;
 
 import lombok.Data;
 import java.io.Serializable;

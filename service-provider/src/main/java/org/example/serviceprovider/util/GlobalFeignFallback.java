@@ -1,7 +1,7 @@
 package org.example.serviceprovider.util;
 
 import org.example.serviceprovider.feign.UserServiceClient;
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 import org.springframework.stereotype.Component;
 
 /**

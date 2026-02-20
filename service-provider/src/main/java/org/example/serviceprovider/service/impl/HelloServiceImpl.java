@@ -1,7 +1,7 @@
 package org.example.serviceprovider.service.impl;
 
 import org.example.serviceprovider.util.ApiResponse;
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 import org.example.serviceprovider.service.HelloService;
 import org.example.serviceprovider.feign.UserServiceClient;
 import org.springframework.stereotype.Service;

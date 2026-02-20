@@ -114,6 +114,13 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <!-- elastic 服务结束 -->
+        <!-- minio服务开始 -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>8.5.7</version> <!-- 对应最新版MinIO服务器 -->
+        </dependency>
+        <!-- minio服务结束 -->
     </dependencies>
 
     <build>

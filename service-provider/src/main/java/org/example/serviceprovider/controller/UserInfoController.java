@@ -1,6 +1,6 @@
 package org.example.serviceprovider.controller;
 
-import org.example.serviceprovider.entity.UserEntity;
+import org.example.serviceprovider.entity.po.UserEntity;
 import org.example.serviceprovider.service.UserService;
 import org.example.serviceprovider.util.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +20,11 @@ public class UserInfoController {
     public ApiResponse<UserEntity> saveUserInfo(){
         UserEntity users = userService.saveUserInfo();
         return ApiResponse.success(users);
+    }
+
+    @GetMapping("/saveUser")
+    public ApiResponse<Boolean> saveUser(){
+        return ApiResponse.success(userService.saveUser());
     }
 
     public static void main(String[] args) {
